@@ -1,0 +1,22 @@
+body {
+  background-color: rgba(20, 17, 17, 0.759);
+  color: rgba(255, 255, 255, 0.852);
+}
+
+ul li {
+  display: flex;
+  list-style-type: none;
+  padding: 6px;
+}
+
+.del {
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.del:hover {
+  color: red;
+}
