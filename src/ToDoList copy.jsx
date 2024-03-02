@@ -1,24 +1,28 @@
 import React, { useState } from 'react';
-import ColorModal from './ColorModal';
 
 function ToDoList({ todos }) {
   const [tasks, setTask] = useState([
-    { text: 'Learn the basics of JavaScript (ES6)', color: '' },
-    {
-      text: 'Understand the concept of React and its component-based architecture',
-      color: '',
-    },
-    { text: 'Set up a React development environment', color: '' },
-    { text: 'Create your first React application', color: '' },
-    { text: 'Learn how to use React components', color: '' },
-    { text: 'Understand the concept of state and props in React', color: '' },
+    'Learn the basics of JavaScript (ES6)',
+    'Understand the concept of React and its component-based architecture',
+    'Set up a React development environment',
+    'Create your first React application',
+    'Learn about JSX and how it differs from HTML',
+    'Understand the concept of state and props in React',
+    'Learn about React Hooks and how to use them',
+    'Understand the component lifecycle in React',
+    'Learn how to handle events in React',
+    'Understand conditional rendering in React',
+    'Learn how to work with forms in React',
+    'Understand the concept of lifting state up',
+    'Learn about using keys in lists',
+    'Understand the concept of Context API for state management',
+    'Learn about routing in React using React Router',
+    'Understand how to fetch data from an API in React',
+    'Learn about testing React applications',
+    'Build a project using React to solidify your understanding',
   ]);
-
   const [newTask, setNewTask] = useState('');
-  const colorOptions = ['Red', 'Blue', 'Green', 'Yellow'];
   const [selectedColor, setSelectedColor] = useState('');
-  const [isColorModalOpen, setIsColorModalOpen] = useState(false);
-  const [editingColorIndex, setEditingColorIndex] = useState(null);
 
   const handleInputChange = (e) => {
     setNewTask(e.target.value);
@@ -26,17 +30,9 @@ function ToDoList({ todos }) {
 
   const addTask = () => {
     if (newTask !== '') {
-      setTask((t) => [...t, { text: newTask, color: selectedColor }]);
+      setTask((t) => [...t, newTask]);
       setNewTask('');
-      setSelectedColor('');
     }
-  };
-
-  const handleColorChange = (color, index) => {
-    const newTasks = [...tasks];
-    newTasks[index].color = color;
-    setTask(newTasks);
-    setIsColorModalOpen(false);
   };
 
   const deleteTask = (index) => {
@@ -119,38 +115,20 @@ function ToDoList({ todos }) {
           <li key={index}>
             <div
               className='apple-dots'
-              style={{ backgroundColor: task.color }}
-              onClick={() => {
-                setEditingColorIndex(index);
-                setIsColorModalOpen(true);
-              }}></div>
-
-            <span className='text'>{task.text}</span>
-            <div className='buttons'>
-              <button
-                className='delete-button'
-                onClick={() => deleteTask(index)}>
-                Delete
-              </button>
-              <button className='move-button' onClick={() => moveTaskUp(index)}>
-                &and;
-              </button>
-              <button
-                className='move-button'
-                onClick={() => moveTaskDown(index)}>
-                &or;
-              </button>
-            </div>
+              style={{ backgroundColor: selectedColor }}></div>
+            <span className='text'>{task}</span>
+            <button className='delete-button' onClick={() => deleteTask(index)}>
+              Delete
+            </button>
+            <button className='move-button' onClick={() => moveTaskUp(index)}>
+              &and;
+            </button>
+            <button className='move-button' onClick={() => moveTaskDown(index)}>
+              &or;
+            </button>
           </li>
         ))}
       </ol>
-      <ColorModal
-        isOpen={isColorModalOpen}
-        colors={colorOptions}
-        selectedColor={tasks[editingColorIndex]?.color}
-        onSelect={(color) => handleColorChange(color, editingColorIndex)}
-        onClose={() => setIsColorModalOpen(false)}
-      />
     </div>
   );
 }
