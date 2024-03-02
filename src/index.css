@@ -1,22 +1,21 @@
-body {
-  background-color: rgba(20, 17, 17, 0.759);
-  color: rgba(255, 255, 255, 0.852);
-}
-
-ul li {
-  display: flex;
+.to-do-list {
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
   list-style-type: none;
-  padding: 6px;
+  margin-top: 100px;
 }
 
-.del {
-  color: black;
+h1 {
+  font-size: 4rem;
+}
+
+button {
+  font-size: 1.7rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-left: 10px;
-}
-
-.del:hover {
-  color: red;
+  transition: background-color 0.5 ease;
 }
