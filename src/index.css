@@ -1,5 +1,5 @@
 body {
-  background-color: hsl(0,0%,10%);
+  background-color: hsl(0, 67%, 74%);
 }
 
 .to-do-list {
@@ -80,9 +80,9 @@ li:hover {
   text-align: left;
 }
 
-.delete-button, .move-button {
+.delete-button,
+.move-button {
   padding: 8px, 12px;
   font-size: 1.4rem;
   margin-left: 10px;
 }
-```
