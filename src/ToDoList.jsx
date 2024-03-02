@@ -17,13 +17,34 @@ function ToDoList({ todos }) {
     setNewTask(e.target.value);
   };
 
-  const addTask = () => {};
+  const addTask = () => {
+    if (newTask !== '') {
+      setTask((t) => [...t, newTask]);
+      setNewTask('');
+    }
+  };
 
-  const deleteTask = (index) => {};
+  const deleteTask = (index) => {
+    setTask((t) => t.filter((_, i) => i !== index));
+  };
 
-  const moveTaskUp = (index) => {};
+  const moveTaskUp = (index) => {
+    if (index === 0) return;
+    const newTasks = [...tasks];
+    const temp = newTasks[index];
+    newTasks[index] = newTasks[index - 1];
+    newTasks[index - 1] = temp;
+    setTask(newTasks);
+  };
 
-  const moveTaskDown = (index) => {};
+  const moveTaskDown = (index) => {
+    if (index === tasks.length - 1) return;
+    const newTasks = [...tasks];
+    const temp = newTasks[index];
+    newTasks[index] = newTasks[index + 1];
+    newTasks[index + 1] = temp;
+    setTask(newTasks);
+  };
 
   return (
     <div className='to-do-list'>
@@ -48,10 +69,10 @@ function ToDoList({ todos }) {
               Delete
             </button>
             <button className='move-button' onClick={() => moveTaskUp(index)}>
-              ⬆️
+              &and;
             </button>
             <button className='move-button' onClick={() => moveTaskDown(index)}>
-              ⬇️
+              &or;
             </button>
           </li>
         ))}
